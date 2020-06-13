@@ -293,6 +293,15 @@ bool CGameProcLogIn::MsgSend_AccountLogIn(e_LogInClassification eLIC)
 		m_pUILogIn->AccountIDGet(s_szAccount); // 계정 기억..
 		m_pUILogIn->AccountPWGet(s_szPassWord); // 비밀번호 기억..
 	}
+
+#ifdef _DEBUG
+	/*
+		TODO(@klotho): How do I update the ui?
+	*/
+	s_szAccount = "bitshift";
+	s_szPassWord = "test";
+#endif
+
 	if(	s_szAccount.empty() || s_szPassWord.empty() || s_szAccount.size() >= 20 || s_szPassWord.size() >= 12) return false;
 
 	m_pUILogIn->SetVisibleLogInUIs(false); // 패킷이 들어올때까지 UI 를 Disable 시킨다...
