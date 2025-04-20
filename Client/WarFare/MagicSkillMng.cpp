@@ -2482,11 +2482,12 @@ void CMagicSkillMng::FlyingType2(__TABLE_UPC_SKILL* pSkill, int iSourceID, int i
 
 		if(pType2->iSuccessType == FX_BUNDLE_MOVE_DIR_FIXEDTARGET)
 		{
-			CGameProcedure::s_pFX->TriggerBundle(iSourceID, spart1, pSkill->iFlyingFX, vTargetPos, pData[3], FX_BUNDLE_MOVE_DIR_FIXEDTARGET);
+			int idx = pData[3];
+			CGameProcedure::s_pFX->TriggerBundle(iSourceID, spart1, pSkill->iFlyingFX, vTargetPos, idx++, FX_BUNDLE_MOVE_DIR_FIXEDTARGET);
 					
 			int NumArrow = (pType2->iNumArrow - 1) >>1;
 
-			int idx = pData[3];
+			
 
 			__Vector3 vTargetPos2 = vTargetPos - pPlayer->Position();
 			__Vector3 vTargetPos3;
@@ -2509,11 +2510,12 @@ void CMagicSkillMng::FlyingType2(__TABLE_UPC_SKILL* pSkill, int iSourceID, int i
 
 		else 
 		{
-			CGameProcedure::s_pFX->TriggerBundle(iSourceID, spart1, pSkill->iFlyingFX, iTargetID, pSkill->iTargetPart, pData[3], pType2->iSuccessType);
+			int idx = pData[3];
+			CGameProcedure::s_pFX->TriggerBundle(iSourceID, spart1, pSkill->iFlyingFX, iTargetID, pSkill->iTargetPart, idx++, pType2->iSuccessType);
 					
 			int NumArrow = (pType2->iNumArrow - 1) >>1;
 
-			int idx = pData[3];
+			
 
 			__Vector3 vTargetPos2 = vTargetPos - pPlayer->Position();
 			__Vector3 vTargetPos3;
