@@ -613,6 +613,7 @@ public:
 	// packet handlers start here
 	void VersionCheck(Packet & pkt);
 	void LoginProcess(Packet & pkt);
+	void KickProcess(Packet& pkt);
 	bool WordGuardSystem(std::string Word, uint8_t WordStr);
 
 	void SelNationToAgent(Packet & pkt);

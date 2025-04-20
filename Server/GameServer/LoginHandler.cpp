@@ -1,4 +1,5 @@
 ﻿#include "stdafx.h"
+#include "DBAgent.h"
 
 void CUser::VersionCheck(Packet & pkt)
 {
@@ -58,6 +59,33 @@ void CUser::LoginProcess(Packet & pkt)
 fail_return:
 	result << uint8_t(-1);
 	Send(&result);
+}
+
+void CUser::KickProcess(Packet& pkt)
+{
+
+	std::string strAccountID, strPasswd;
+	pkt >> strAccountID >> strPasswd;
+	if (strAccountID.empty() || strAccountID.size() > MAX_ID_SIZE
+		|| strPasswd.empty() || strPasswd.size() > MAX_PW_SIZE)
+		return;
+
+	CUser* pUser = g_pMain->GetUserPtr(strAccountID, TYPE_ACCOUNT);
+	char* cstr = &strAccountID[0];
+
+	if (!WordGuardSystem(cstr, strlen(cstr)))
+		return;
+
+	if (pUser)
+	{
+		// authorize the user
+		if (!g_DBAgent.AccountLogin(strAccountID, strPasswd))
+			return;
+		// if the user is already logged in, kick them out
+		g_DBAgent.AccountLogout(strAccountID);
+		pUser->Disconnect();
+	}
+
 }
 
 bool CUser::WordGuardSystem(std::string Word, uint8_t WordStr)
