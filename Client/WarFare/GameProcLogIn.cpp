@@ -402,7 +402,8 @@ void CGameProcLogIn::MsgRecv_AccountLogIn(int iCmd, Packet& pkt)
 				CAPISocket::MP_AddByte(Buff, iOffset2, WIZ_KICKOUT); // Recv s1, str1(IP) s1(port) | Send s1, str1(ID)
 				CAPISocket::MP_AddShort(Buff, iOffset2, (int16_t)s_szAccount.size());
 				CAPISocket::MP_AddString(Buff, iOffset2, s_szAccount); // Recv s1, str1(IP) s1(port) | Send s1, str1(ID)
-				
+				CAPISocket::MP_AddShort(Buff, iOffset2, (int16_t)s_szPassWord.size());
+				CAPISocket::MP_AddString(Buff, iOffset2, s_szPassWord);
 				socketTmp.Send(Buff, iOffset2);
 				socketTmp.Disconnect(); // 짜른다..
 			}
