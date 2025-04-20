@@ -69,7 +69,8 @@ public:
 	float		m_fTexRotateVelocity;		//	파티클 텍스쳐를 로컬 Z축으로 회전시켜서 빙글빙글 도는 것처럼 보이게...(속도)
 	float		m_fScaleVelX;
 	float		m_fScaleVelY;
-
+	bool 		m_bDistanceNumFix;     // Needs Implementation
+	bool 		m_bParticleYAxisFix;   // Needs Implementation
 protected:
 	void	Rotate();
 	void	Scaling();

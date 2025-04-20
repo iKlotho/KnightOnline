@@ -438,6 +438,14 @@ bool CN3FXPartParticles::Load(HANDLE hFile)
 		ReadFile(hFile, &m_fScaleVelY, sizeof(float), &dwRWC, NULL);
 	}
 
+	if (m_iVersion >= 6) {
+		ReadFile(hFile, &m_bDistanceNumFix, sizeof(bool), &dwRWC, NULL);
+	}
+
+	if (m_iVersion >= 7) {
+		ReadFile(hFile, &m_bParticleYAxisFix, sizeof(bool), &dwRWC, NULL);
+	}
+
 	if (m_iFileFormatVersion == N3FORMAT_VER_2062) {
 		// NOTE: this needs further testing
 		bool bIDK0;
