@@ -230,6 +230,9 @@ bool CUser::HandlePacket(Packet & pkt)
 
 		if (command == WIZ_LOGIN)
 			LoginProcess(pkt);
+		
+		if (command == WIZ_KICKOUT)
+			KickProcess(pkt);
 
 		return true;
 	}
