@@ -132,7 +132,7 @@ void LoginSession::HandleLogin(
 
 	std::string resultName = GetAuthResultName(resultCode);
 	std::string szLogMessage = string_format(
-		"[ LOGIN - %d:%d:%d ] ID=%s Authentication=%s\n",
+		"[ LOGIN - %d:%d:%d ] ID=%s Authentication=%s Result=%s\n",
 		time.GetHour(),
 		time.GetMinute(),
 		time.GetSecond(),
